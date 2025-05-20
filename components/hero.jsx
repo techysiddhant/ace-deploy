@@ -8,23 +8,23 @@ const Hero = () => {
   const [platform, setPlatform] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [buildData, setBuildData] = useState([]);
   useEffect(() => {
     // Detect platform
     const userAgent = window.navigator.userAgent.toLowerCase();
-    if (userAgent.indexOf("windows") !== -1) {
+    console.log(userAgent);
+    if (userAgent?.startsWith("win")) {
       setPlatform("windows");
-    } else if (userAgent.indexOf("mac") !== -1) {
+    } else if (userAgent?.startsWith("mac")) {
       setPlatform("mac");
     } else {
       setPlatform("other");
     }
+    // fetchBuilds();
   }, []);
-  const fetchBuilds = async () => {
+  const handleDownload = async () => {
     try {
       setLoading(true);
       setError(null);
-
       const response = await fetch(
         "https://dev.activity.api.aceplus.in/web/dashboard/builds",
         {
@@ -42,36 +42,30 @@ const Hero = () => {
       }
 
       const data = await response.json();
-
       if (data.status && data.data) {
-        setBuildData(data.data);
+        const buildData = data.data;
+        const currentBuild = buildData.find(
+          (build) => build.build_type === platform
+        );
+        if (!currentBuild) return null;
+        const a = document.createElement("a");
+        a.href = currentBuild.build_url;
+        a.download = currentBuild.build_url.substring(
+          currentBuild.build_url.lastIndexOf("/") + 1
+        );
+        // a.target = "_blank";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       } else {
         throw new Error("Invalid response format");
       }
-      setLoading(false);
     } catch (err) {
       console.error("Error fetching builds:", err);
       setError(`Failed to fetch builds: ${err.message}`);
+    } finally {
       setLoading(false);
     }
-  };
-  const handleDownload = async () => {
-    setLoading(true);
-    await fetchBuilds();
-    setLoading(false);
-    if (!buildData || buildData.length === 0) return null;
-    const currentBuild = buildData.find(
-      (build) => build.build_type === platform
-    );
-    if (!currentBuild) return null;
-    const a = document.createElement("a");
-    a.href = currentBuild.build_url;
-    a.download = currentBuild.build_url.substring(
-      currentBuild.build_url.lastIndexOf("/") + 1
-    );
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
   };
   return (
     <>
