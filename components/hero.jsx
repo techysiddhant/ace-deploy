@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Loader from "./loader";
 
 const Hero = () => {
   const [platform, setPlatform] = useState(null);
@@ -55,13 +56,13 @@ const Hero = () => {
       setLoading(false);
     }
   };
-  const handleWindowsDownload = () => {
+  const handleDownload = () => {
     fetchBuilds();
     if (!buildData || buildData.length === 0) return null;
-    if (platform !== "windows") return null;
     const currentBuild = buildData.find(
-      (build) => build.build_type === "windows"
+      (build) => build.build_type === platform
     );
+    if (!currentBuild) return null;
     const a = document.createElement("a");
     a.href = currentBuild.build_url;
     a.download = currentBuild.build_url.substring(
@@ -73,26 +74,86 @@ const Hero = () => {
     document.body.removeChild(a);
   };
   return (
-    <div className="hero-section">
-      <div className="container">
-        <div className="hero-section-content">
-          <h1>Learn Anytime, Anywhere</h1>
-          <p>Join our 3,000+ happy student users.</p>
+    <>
+      {loading && <Loader />}
+      <div className="hero-section">
+        <div className="container">
+          <div className="hero-section-content">
+            <h1>Learn Anytime, Anywhere</h1>
+            <p>Join our 3,000+ happy student users.</p>
+          </div>
         </div>
-      </div>
-      <div className="hero-section-images">
-        <div className="container hero-section-images-div">
-          <div className="hero-mobile-app-div">
-            <div className="hero-mobile-app-div-image">
-              <Image
-                src="/hero-phone.svg"
-                alt="mobile-app-icon"
-                width={300}
-                height={100}
-              />
+        <div className="hero-section-images">
+          <div className="container hero-section-images-div">
+            <div className="hero-mobile-app-div">
+              <div className="hero-mobile-app-div-image">
+                <Image
+                  src="/hero-phone.svg"
+                  alt="mobile-app-icon"
+                  width={300}
+                  height={100}
+                />
+              </div>
+              <p className="hero-mobile-app-div-title">ACEplus on Mobile</p>
+              <div className="hero-mobile-app-download-div">
+                <div className="hero-mobile-app-download-div-android">
+                  <Image
+                    src="/android-icon.svg"
+                    alt="android-icon"
+                    width={24}
+                    height={24}
+                  />
+                  <Link href="https://play.google.com/store/apps/details?id=com.app.aceplus">
+                    Download on the Google Play
+                  </Link>
+                </div>
+                <div className="hero-mobile-app-download-div-apple">
+                  <Image
+                    src="/apple-icon.svg"
+                    alt="apple-icon"
+                    width={24}
+                    height={24}
+                  />
+                  <Link href="https://apps.apple.com/in/app/aceplus-speaking-soft-skills/id6742319474">
+                    Download on the Apple Store
+                  </Link>
+                </div>
+              </div>
             </div>
-            <p className="hero-mobile-app-div-title">ACEplus on Mobile</p>
-            <div className="hero-mobile-app-download-div">
+            <div className="hero-desktop-app-div">
+              <div className="hero-desktop-app-div-image">
+                <Image
+                  src="/hero-mac.svg"
+                  alt="desktop-image"
+                  width={300}
+                  height={200}
+                />
+              </div>
+              <p className="hero-desktop-app-div-title">ACEplus on Desktop</p>
+              <div className="hero-mobile-app-download-div">
+                <div className="hero-mobile-app-download-div-windows">
+                  <Image
+                    src="/window-icon.svg"
+                    alt="windows-icon"
+                    width={24}
+                    height={24}
+                  />
+                  <button onClick={handleDownload}>Download on Windows</button>
+                </div>
+                <div className="hero-mobile-app-download-div-mac">
+                  <Image
+                    src="/apple-icon.svg"
+                    alt="apple-icon"
+                    width={24}
+                    height={24}
+                  />
+                  <button onClick={handleDownload}>Download on Mac</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="hero-desktop-app-download-div">
+            <div className="hero-mobile-app-download-div-desktop">
               <div className="hero-mobile-app-download-div-android">
                 <Image
                   src="/android-icon.svg"
@@ -116,18 +177,7 @@ const Hero = () => {
                 </Link>
               </div>
             </div>
-          </div>
-          <div className="hero-desktop-app-div">
-            <div className="hero-desktop-app-div-image">
-              <Image
-                src="/hero-mac.svg"
-                alt="desktop-image"
-                width={300}
-                height={200}
-              />
-            </div>
-            <p className="hero-desktop-app-div-title">ACEplus on Desktop</p>
-            <div className="hero-mobile-app-download-div">
+            <div className="hero-mobile-app-download-div-desktop hero-mobile-app-download-div-desktop-2">
               <div className="hero-mobile-app-download-div-windows">
                 <Image
                   src="/window-icon.svg"
@@ -135,9 +185,7 @@ const Hero = () => {
                   width={24}
                   height={24}
                 />
-                <button onClick={handleWindowsDownload}>
-                  Download on Windows
-                </button>
+                <button onClick={handleDownload}>Download on Windows</button>
               </div>
               <div className="hero-mobile-app-download-div-mac">
                 <Image
@@ -146,61 +194,13 @@ const Hero = () => {
                   width={24}
                   height={24}
                 />
-                <p>Download on Mac</p>
+                <button onClick={handleDownload}>Download on Mac</button>
               </div>
             </div>
           </div>
         </div>
-        <div className="hero-desktop-app-download-div">
-          <div className="hero-mobile-app-download-div-desktop">
-            <div className="hero-mobile-app-download-div-android">
-              <Image
-                src="/android-icon.svg"
-                alt="android-icon"
-                width={24}
-                height={24}
-              />
-              <Link href="https://play.google.com/store/apps/details?id=com.app.aceplus">
-                Download on the Google Play
-              </Link>
-            </div>
-            <div className="hero-mobile-app-download-div-apple">
-              <Image
-                src="/apple-icon.svg"
-                alt="apple-icon"
-                width={24}
-                height={24}
-              />
-              <Link href="https://apps.apple.com/in/app/aceplus-speaking-soft-skills/id6742319474">
-                Download on the Apple Store
-              </Link>
-            </div>
-          </div>
-          <div className="hero-mobile-app-download-div-desktop hero-mobile-app-download-div-desktop-2">
-            <div className="hero-mobile-app-download-div-windows">
-              <Image
-                src="/window-icon.svg"
-                alt="windows-icon"
-                width={24}
-                height={24}
-              />
-              <button onClick={handleWindowsDownload}>
-                Download on Windows
-              </button>
-            </div>
-            <div className="hero-mobile-app-download-div-mac">
-              <Image
-                src="/apple-icon.svg"
-                alt="apple-icon"
-                width={24}
-                height={24}
-              />
-              <p>Download on Mac</p>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 

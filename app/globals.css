@@ -196,7 +196,7 @@ header{
 .hero-mobile-app-download-div-android a,
 .hero-mobile-app-download-div-apple a,
 .hero-mobile-app-download-div-windows button,
-.hero-mobile-app-download-div-mac p{
+.hero-mobile-app-download-div-mac button{
   font-family: var(--font-quicksand);
   font-size: 16px;
   font-weight: 500;
@@ -206,14 +206,12 @@ header{
   text-decoration: underline;
   cursor: pointer;
 }
-.hero-mobile-app-download-div-windows button{
+.hero-mobile-app-download-div-windows button,
+.hero-mobile-app-download-div-mac button{
   background-color: transparent;
   border: none;
 }
-.hero-mobile-app-download-div-mac p,
-.hero-mobile-app-download-div-mac img{
-  opacity: 0.5;
-}
+
 .explore-section{
   padding: 20px 0;
 }
@@ -309,7 +307,7 @@ header{
 }
 .explore-section-image-text{
   font-family: var(--font-quicksand);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 130%;
   letter-spacing: 0.5px;
@@ -481,6 +479,36 @@ footer{
 .hero-desktop-app-download-div{
   display: none;
 }
+.loader-div{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 9999;
+}
+.loader{
+  width: 48px;
+  height: 48px;
+  border: 5px solid #482BC5;
+  border-bottom: 5px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media only screen and (min-width: 768px) {
   .hero-section-content h1{
     font-size: 40px;
@@ -493,6 +521,7 @@ footer{
     padding: 30px 0px;
     padding-bottom: 10px;
     gap:100px;
+    justify-content: space-evenly;
   }
   .hero-mobile-app-download-div{
     display: none;
@@ -506,13 +535,29 @@ footer{
   }
   .hero-desktop-app-download-div{
     display: flex;
-    gap:100px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+  }
+  .hero-mobile-app-download-div-desktop{
+    display: flex;
+    gap:14px;
+    flex-direction: column;
   }
   .hero-desktop-app-div-title{
     font-size: 24px;
+  }
+  .explore-section-content h2{
+    font-size: 40px;
+  }
+  .explore-section-content p{
+    font-size: 24px;
+  }
+  .explore-section-content-button button{
+    font-size: 16px;
+    letter-spacing: 0.81px;
+    padding: 16px 20px;
   }
   .explore-section-image-qr-code img{
     width: 220px;
@@ -542,7 +587,6 @@ footer{
   .stats-section-content-text{
     text-align: left;
     font-size: 16px;
-    /* max-width: 300px; */
   }
   .stats-section-content-stats{
     flex-direction: row;
@@ -597,24 +641,23 @@ footer{
     width: 90%;
     height: 100%;
   }
+  .hero-section-images-div{
+    gap:60px;
+  }
   .hero-desktop-app-div-image{
     width: 90%;
     height: 100%;
   }
   .hero-desktop-app-download-div{
-    /* gap:100px; */
     padding-top: 20px;
     padding-bottom: 40px;
   }
    .hero-desktop-app-download-div .hero-mobile-app-download-div-desktop{
     display: flex;
-    gap:14px;
+    flex-direction: row;
+    gap:20px;
     align-items: center;
     justify-content: center;
-    /* padding: 0 40px; */
-   }
-   .hero-desktop-app-download-div .hero-mobile-app-download-div-desktop-2{
-    padding-right: 100px;
    }
   .hero-mobile-app-download-div{
     flex-direction: row;
@@ -622,9 +665,9 @@ footer{
   .hero-section{
     padding-bottom: 50px;
   }
-  .hero-mobile-app-download-div-android p,
-  .hero-mobile-app-download-div-apple p,
-  .hero-mobile-app-download-div-windows p,
+  .hero-mobile-app-download-div-android a,
+  .hero-mobile-app-download-div-apple a,
+  .hero-mobile-app-download-div-windows button,
   .hero-mobile-app-download-div-mac p{
     font-size: 14px;
   }
@@ -652,7 +695,7 @@ footer{
     padding-left: 80px;
   }
   .explore-section-image-div-text-android{
-    padding-right: 40px;
+    padding-right: 30px;
   }
   .explore-section-div{
     flex-direction: column-reverse;
@@ -683,7 +726,7 @@ footer{
   }
   .stats-section-container{
     flex-direction: row;
-    gap: 0px;
+    gap: 20px;
   }
   .stats-section-content-stats-number{
     font-size: 35px;
@@ -813,14 +856,14 @@ footer{
     gap:250px;
   }
   .hero-desktop-app-download-div{
-    gap:150px;
+    gap:100px;
   }
   .hero-mobile-app-download-div-desktop-2{
     padding-right: 60px;
   }
-  .hero-mobile-app-download-div-android p,
-  .hero-mobile-app-download-div-apple p,
-  .hero-mobile-app-download-div-windows p,
+  .hero-mobile-app-download-div-android a,
+  .hero-mobile-app-download-div-apple a,
+  .hero-mobile-app-download-div-windows button,
   .hero-mobile-app-download-div-mac p{
     font-size: 16px;
   }
