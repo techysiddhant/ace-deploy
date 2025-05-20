@@ -31,7 +31,6 @@ const Hero = () => {
           method: "GET",
           headers: {
             Accept: "application/json",
-            // Add any required authentication headers here
           },
         }
       );
@@ -49,7 +48,6 @@ const Hero = () => {
       } else {
         throw new Error("Invalid response format");
       }
-
       setLoading(false);
     } catch (err) {
       console.error("Error fetching builds:", err);
@@ -57,13 +55,13 @@ const Hero = () => {
       setLoading(false);
     }
   };
-  const handleDownload = () => {
+  const handleWindowsDownload = () => {
     fetchBuilds();
     if (!buildData || buildData.length === 0) return null;
+    if (platform !== "windows") return null;
     const currentBuild = buildData.find(
-      (build) => build.build_type === platform
+      (build) => build.build_type === "windows"
     );
-
     const a = document.createElement("a");
     a.href = currentBuild.build_url;
     a.download = currentBuild.build_url.substring(
@@ -137,7 +135,9 @@ const Hero = () => {
                   width={24}
                   height={24}
                 />
-                <button onClick={handleDownload}>Download on Windows</button>
+                <button onClick={handleWindowsDownload}>
+                  Download on Windows
+                </button>
               </div>
               <div className="hero-mobile-app-download-div-mac">
                 <Image
@@ -184,7 +184,9 @@ const Hero = () => {
                 width={24}
                 height={24}
               />
-              <button onClick={handleDownload}>Download on Windows</button>
+              <button onClick={handleWindowsDownload}>
+                Download on Windows
+              </button>
             </div>
             <div className="hero-mobile-app-download-div-mac">
               <Image

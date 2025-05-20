@@ -204,6 +204,7 @@ header{
   line-height: 130%;
   letter-spacing: 0.5px;
   text-decoration: underline;
+  cursor: pointer;
 }
 .hero-mobile-app-download-div-windows button{
   background-color: transparent;
