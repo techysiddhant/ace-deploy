@@ -19,7 +19,6 @@ const Hero = () => {
     } else {
       setPlatform("other");
     }
-    // fetchBuilds();
   }, []);
   const fetchBuilds = async () => {
     try {
@@ -56,8 +55,10 @@ const Hero = () => {
       setLoading(false);
     }
   };
-  const handleDownload = () => {
-    fetchBuilds();
+  const handleDownload = async () => {
+    setLoading(true);
+    await fetchBuilds();
+    setLoading(false);
     if (!buildData || buildData.length === 0) return null;
     const currentBuild = buildData.find(
       (build) => build.build_type === platform
@@ -68,7 +69,6 @@ const Hero = () => {
     a.download = currentBuild.build_url.substring(
       currentBuild.build_url.lastIndexOf("/") + 1
     );
-    a.target = "_blank";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
