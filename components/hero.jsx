@@ -1,8 +1,79 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [platform, setPlatform] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [buildData, setBuildData] = useState([]);
+  useEffect(() => {
+    // Detect platform
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    if (userAgent.indexOf("windows") !== -1) {
+      setPlatform("windows");
+    } else if (userAgent.indexOf("mac") !== -1) {
+      setPlatform("mac");
+    } else {
+      setPlatform("other");
+    }
+    // fetchBuilds();
+  }, []);
+  const fetchBuilds = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await fetch(
+        "https://dev.activity.api.aceplus.in/web/dashboard/builds",
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            // Add any required authentication headers here
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch builds with status: ${response.status}`
+        );
+      }
+
+      const data = await response.json();
+
+      if (data.status && data.data) {
+        setBuildData(data.data);
+      } else {
+        throw new Error("Invalid response format");
+      }
+
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching builds:", err);
+      setError(`Failed to fetch builds: ${err.message}`);
+      setLoading(false);
+    }
+  };
+  const handleDownload = () => {
+    fetchBuilds();
+    if (!buildData || buildData.length === 0) return null;
+    const currentBuild = buildData.find(
+      (build) => build.build_type === platform
+    );
+
+    const a = document.createElement("a");
+    a.href = currentBuild.build_url;
+    a.download = currentBuild.build_url.substring(
+      currentBuild.build_url.lastIndexOf("/") + 1
+    );
+    a.target = "_blank";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
   return (
     <div className="hero-section">
       <div className="container">
@@ -19,7 +90,7 @@ const Hero = () => {
                 src="/hero-phone.svg"
                 alt="mobile-app-icon"
                 width={300}
-                height={200}
+                height={100}
               />
             </div>
             <p className="hero-mobile-app-div-title">ACEplus on Mobile</p>
@@ -66,7 +137,7 @@ const Hero = () => {
                   width={24}
                   height={24}
                 />
-                <p>Download on Windows</p>
+                <button onClick={handleDownload}>Download on Windows</button>
               </div>
               <div className="hero-mobile-app-download-div-mac">
                 <Image
@@ -77,6 +148,52 @@ const Hero = () => {
                 />
                 <p>Download on Mac</p>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-desktop-app-download-div">
+          <div className="hero-mobile-app-download-div-desktop">
+            <div className="hero-mobile-app-download-div-android">
+              <Image
+                src="/android-icon.svg"
+                alt="android-icon"
+                width={24}
+                height={24}
+              />
+              <Link href="https://play.google.com/store/apps/details?id=com.app.aceplus">
+                Download on the Google Play
+              </Link>
+            </div>
+            <div className="hero-mobile-app-download-div-apple">
+              <Image
+                src="/apple-icon.svg"
+                alt="apple-icon"
+                width={24}
+                height={24}
+              />
+              <Link href="https://apps.apple.com/in/app/aceplus-speaking-soft-skills/id6742319474">
+                Download on the Apple Store
+              </Link>
+            </div>
+          </div>
+          <div className="hero-mobile-app-download-div-desktop hero-mobile-app-download-div-desktop-2">
+            <div className="hero-mobile-app-download-div-windows">
+              <Image
+                src="/window-icon.svg"
+                alt="windows-icon"
+                width={24}
+                height={24}
+              />
+              <button onClick={handleDownload}>Download on Windows</button>
+            </div>
+            <div className="hero-mobile-app-download-div-mac">
+              <Image
+                src="/apple-icon.svg"
+                alt="apple-icon"
+                width={24}
+                height={24}
+              />
+              <p>Download on Mac</p>
             </div>
           </div>
         </div>

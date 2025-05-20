@@ -42,10 +42,14 @@ const Footer = () => {
                 <Link href="">How to speak Better English with Derek</Link>
               </li>
               <li>
-                <Link href="">How to be a Confident Speaker</Link>
+                <Link href="" className="footer-mob-menu-div-2-link">
+                  How to be a Confident Speaker
+                </Link>
               </li>
               <li>
-                <Link href="">How to be an ACE Public Speaker</Link>
+                <Link href="" className="footer-mob-menu-div-2-link">
+                  How to be an ACE Public Speaker
+                </Link>
               </li>
             </ul>
             <Link href="">Gaming Zone</Link>
@@ -64,7 +68,7 @@ const Footer = () => {
             <div className="footer-mob-menu-div-4-icons">
               <Link href="">
                 <Image
-                  src="/instagram.png"
+                  src="/instagram.svg"
                   alt="instagram"
                   width={20}
                   height={20}
@@ -72,7 +76,7 @@ const Footer = () => {
               </Link>
               <Link href="">
                 <Image
-                  src="/facebook.png"
+                  src="/facebook.svg"
                   alt="facebook"
                   width={20}
                   height={20}
@@ -80,7 +84,7 @@ const Footer = () => {
               </Link>
               <Link href="">
                 <Image
-                  src="/linkedin.png"
+                  src="/linkedin.svg"
                   alt="linkedin"
                   width={20}
                   height={20}
@@ -104,7 +108,7 @@ const Footer = () => {
           <div className="footer-div-1-icons">
             <Link href="">
               <Image
-                src="/instagram.png"
+                src="/instagram.svg"
                 width={20}
                 height={20}
                 alt="instagram"
@@ -112,19 +116,14 @@ const Footer = () => {
             </Link>
             <Link href="">
               <Image
-                src="/facebook.png"
+                src="/facebook.svg"
                 width={20}
                 height={20}
                 alt="facebook"
               />
             </Link>
             <Link href="">
-              <Image
-                src="/linkedin.png"
-                width={20}
-                height={20}
-                alt="linkedin"
-              />
+              <Image src="/youtube.svg" width={24} height={24} alt="youtube" />
             </Link>
           </div>
         </div>
@@ -160,10 +159,14 @@ const Footer = () => {
                 <Link href="">How to speak Better English with Derek</Link>
               </li>
               <li>
-                <Link href="">How to be a Confident Speaker</Link>
+                <Link href="" className="footer-div-2-container-3-link">
+                  How to be a Confident Speaker
+                </Link>
               </li>
               <li>
-                <Link href="">How to be an ACE Public Speaker</Link>
+                <Link href="" className="footer-div-2-container-3-link">
+                  How to be an ACE Public Speaker
+                </Link>
               </li>
             </ul>
             <Link href="">Gaming Zone</Link>

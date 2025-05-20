@@ -88,8 +88,12 @@ header{
   object-fit: cover;
 }
 .hero-section{
-  background-color: #482BC5;
+  /* background-color: #482BC5; */
   padding-bottom: 20px;
+  background-image: url("/blue-star-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .hero-section-content{
   /* padding-top:46px; */
@@ -126,6 +130,7 @@ header{
   align-items: center;
   /* padding: 0px 60px; */
   gap:28px;
+  padding-bottom: 20px;
 }
 .hero-mobile-app-div-image{
   width: 200px;
@@ -190,7 +195,7 @@ header{
 }
 .hero-mobile-app-download-div-android a,
 .hero-mobile-app-download-div-apple a,
-.hero-mobile-app-download-div-windows p,
+.hero-mobile-app-download-div-windows button,
 .hero-mobile-app-download-div-mac p{
   font-family: var(--font-quicksand);
   font-size: 16px;
@@ -199,6 +204,10 @@ header{
   line-height: 130%;
   letter-spacing: 0.5px;
   text-decoration: underline;
+}
+.hero-mobile-app-download-div-windows button{
+  background-color: transparent;
+  border: none;
 }
 .hero-mobile-app-download-div-mac p,
 .hero-mobile-app-download-div-mac img{
@@ -231,7 +240,7 @@ header{
   line-height: 130%;
   letter-spacing: 0.5px;
   text-align: center;
-  color: #535353;
+  color: #333333;
   margin-top: 8px;
 }
 .explore-section-content-button{
@@ -317,7 +326,7 @@ header{
 .stats-section-container{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   padding: 34px 16px;
 }
 .stats-section-content-text{
@@ -326,7 +335,7 @@ header{
   font-weight: 700;
   line-height: 130%;
   letter-spacing: 0.5px;
-  color: #535353;
+  color: #252525;
   text-align: center;
 }
 .stats-section-content-stats{
@@ -410,6 +419,7 @@ footer{
   font-size: 14px;
   font-weight: 500;
   color: #FFFFFFBF;
+  line-height: 150%;
 }
 .footer-mob-menu-div-1 ul,
 .footer-mob-menu-div-2 ul{
@@ -418,6 +428,10 @@ footer{
   gap: 14px;
   list-style: none;
   padding-left:14px;
+  font-family: var(--font-quicksand);
+  line-height: 130%;
+  letter-spacing: 0.5px;
+  color: #FFFFFF80;
 }
 
 .footer-mob-menu-div-1 p,
@@ -433,6 +447,8 @@ footer{
 }
 .footer-mob-menu-div-4{
   font-family: var(--font-quicksand);
+  line-height: 130%;
+  letter-spacing: 1px;
 }
 .footer-mob-menu-div-4-icons{
   display: flex;
@@ -451,8 +467,17 @@ footer{
   font-size: 12px;
   font-weight: 400;
   color: #FFFFFFBF;
+  line-height: 150%;
 }
 .footer-container{
+  display: none;
+}
+.footer-mob-menu-div-2-link,
+.footer-div-2-container-3-link{
+  color: #FFFFFF80;
+
+}
+.hero-desktop-app-download-div{
   display: none;
 }
 @media only screen and (min-width: 768px) {
@@ -468,12 +493,22 @@ footer{
     padding-bottom: 10px;
     gap:100px;
   }
+  .hero-mobile-app-download-div{
+    display: none;
+  }
   .hero-mobile-app-div-image{
     padding-top: 0px;
   }
   .hero-mobile-app-div-title{
-    padding-top: 20px;
+    padding-top: 28px;
     font-size: 24px;
+  }
+  .hero-desktop-app-download-div{
+    display: flex;
+    gap:100px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
   }
   .hero-desktop-app-div-title{
     font-size: 24px;
@@ -493,18 +528,34 @@ footer{
     width: 36px;
     height: 22px;
   }
+  .stats-section-container{
+    flex-direction: row;
+    gap: 20px;
+  }
+  .stats-section-content{
+    width: 50%;
+  }
+  .stats-section-image{
+    width: 50%;
+  }
   .stats-section-content-text{
     text-align: left;
+    font-size: 16px;
+    /* max-width: 300px; */
   }
   .stats-section-content-stats{
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: nowrap;
+    gap:0px;
   }
   .stats-section-content-stats-number{
     text-align: left;
+    font-size: 24px;
   }
   .stats-section-content-stats-text{
     text-align: left;
+    font-size: 12px;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -537,20 +588,38 @@ footer{
   .hero-section-content p{
     font-size: 24px;
   }
+  .hero-section-content{
+    padding-top: 36px;
+  }
   .hero-mobile-app-div-image{
-    padding-top: 30px;
-    width: 80%;
+    padding-top: 20px;
+    width: 90%;
     height: 100%;
   }
   .hero-desktop-app-div-image{
-    width: 100%;
+    width: 90%;
     height: 100%;
   }
+  .hero-desktop-app-download-div{
+    /* gap:100px; */
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+   .hero-desktop-app-download-div .hero-mobile-app-download-div-desktop{
+    display: flex;
+    gap:14px;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0 40px; */
+   }
+   .hero-desktop-app-download-div .hero-mobile-app-download-div-desktop-2{
+    padding-right: 100px;
+   }
   .hero-mobile-app-download-div{
     flex-direction: row;
   }
   .hero-section{
-    padding-bottom: 30px;
+    padding-bottom: 50px;
   }
   .hero-mobile-app-download-div-android p,
   .hero-mobile-app-download-div-apple p,
@@ -558,18 +627,19 @@ footer{
   .hero-mobile-app-download-div-mac p{
     font-size: 14px;
   }
+  
   .explore-section-image{
     flex-direction: row;
     border-radius: 40px;
-    padding: 30px;
+    padding: 40px;
     justify-content: space-between;
   }
   .explore-section-image-text-mobile{
     justify-content: space-between;
-    gap:50px;
+    gap:60px;
   }
   .explore-section-image-text{
-    font-size: 30px;
+    font-size: 28px;
   }
   .explore-section-image-div-text img{
     rotate: 180deg;
@@ -578,17 +648,17 @@ footer{
     font-size: 20px;
   }
   .explore-section-image-div-text-ios{
-    padding-left: 60px;
+    padding-left: 80px;
   }
   .explore-section-image-div-text-android{
-    padding-right: 60px;
+    padding-right: 40px;
   }
   .explore-section-div{
     flex-direction: column-reverse;
     gap:60px;
   }
   .explore-section{
-    padding: 40px 0;
+    padding: 60px 0;
   }
   .explore-section-content h2{
     font-size: 40px;
@@ -596,20 +666,37 @@ footer{
   .explore-section-content p{
     font-size: 24px;
   }
+  .explore-section-content-button button{
+    font-size: 16px;
+    letter-spacing: 0.81px;
+    padding: 16px 20px;
+  }
+  .stats-section-content{
+    width: 80%;
+  }
+  /* .stats-section-image{
+    width: 35%;
+  } */
+  .stats-section-content-text{
+    font-size: 22px;
+  }
   .stats-section-container{
     flex-direction: row;
     gap: 0px;
+  }
+  .stats-section-content-stats-number{
+    font-size: 35px;
   }
   .stats-section-content-stats-text{
     font-size: 18px;
   }
   .stats-section-image{
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     object-fit: contain;
   }
   .stats-section-image img{
-    width: 400px;
+    width: 380px;
     height: 200px;
     object-fit: contain;
   }
@@ -646,11 +733,11 @@ footer{
   }
   .footer-div-1-icons{
     display: flex;
-    gap: 10px;
+    gap: 14px;
   }
   .footer-div-1-icons img{
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
   }
   .footer-div-2-container{
@@ -667,6 +754,7 @@ footer{
     font-family: var(--font-inter);
     font-size: 16px;
     font-weight: 400;
+    line-height: 150%;
   }
   .footer-div-2-container-1 p,
   .footer-div-2-container-2 p,
@@ -677,6 +765,9 @@ footer{
   }
   .footer-div-2-container-2 ul{
     padding-left: 28px;
+    color: #FFFFFFB2;
+    line-height: 150%;
+
   }
   .footer-div-2-container-3{
     width: 190px;
@@ -687,13 +778,18 @@ footer{
     font-size: 16px;
     font-weight: 400;
     color: #FFFFFFCC;
+    line-height: 150%;
   }
   .footer-div-2-container-3 ul{
     font-size: 15px;
     padding-left: 24px;
+    line-height: 120%;
+  }
+  .footer-div-2-container-3 ul li{
+    padding: 3px 0;
   }
   .footer-div-2-container-3-p{
-    padding-top: 30px;
+    padding-top: 38px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -712,6 +808,15 @@ footer{
     height: 60px;
     object-fit: contain;
   }
+  .hero-section-images-div{
+    gap:250px;
+  }
+  .hero-desktop-app-download-div{
+    gap:150px;
+  }
+  .hero-mobile-app-download-div-desktop-2{
+    padding-right: 60px;
+  }
   .hero-mobile-app-download-div-android p,
   .hero-mobile-app-download-div-apple p,
   .hero-mobile-app-download-div-windows p,
@@ -720,7 +825,7 @@ footer{
   }
   .explore-section-image-text-mobile{
     justify-content: space-between;
-    gap:40px;
+    gap:50px;
   }
   .explore-section-image-text{
     font-size: 40px;
@@ -734,13 +839,16 @@ footer{
   .explore-section-image-div-text-android{
     padding-right: 100px;
   }
+  .stats-section-image{
+    width: 45%;
+  }
   .stats-section-image img{
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
   .stats-section-container{
-    gap: 100px;
+    gap: 120px;
     padding: 60px 0;
   }
   .stats-section-content-stats{

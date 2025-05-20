@@ -29,7 +29,12 @@ const Stats = () => {
           </div>
         </div>
         <div className="stats-section-image">
-          <Image src="/stats.png" alt="stats-image" width={600} height={500} />
+          <Image
+            src="/stats-1.svg"
+            alt="stats-image"
+            width={600}
+            height={500}
+          />
         </div>
       </div>
     </div>
