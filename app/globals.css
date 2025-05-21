@@ -90,6 +90,10 @@ header{
   font-weight: 600;
   font-family: var(--font-quicksand);
 }
+.download-btn:hover{
+  background-color: #F9BB00;
+  cursor: pointer;
+}
 .navbar-mobile-menu-div{
   display: flex;
   justify-content: space-between;
