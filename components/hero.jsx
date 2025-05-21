@@ -2,8 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Loader from "./loader";
-
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 const Hero = () => {
   const [platform, setPlatform] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -69,7 +69,14 @@ const Hero = () => {
   };
   return (
     <>
-      {loading && <Loader />}
+      {loading && (
+        <Backdrop
+          sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
+          open={loading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
       <div className="hero-section">
         <div className="container">
           <div className="hero-section-content">
@@ -146,7 +153,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="hero-desktop-app-download-div">
+          <div className="hero-desktop-app-download-div container">
             <div className="hero-mobile-app-download-div-desktop">
               <div className="hero-mobile-app-download-div-android">
                 <Image

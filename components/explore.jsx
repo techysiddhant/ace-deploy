@@ -17,13 +17,13 @@ const Explore = () => {
             skill coaches.
           </p>
           <div className="explore-section-content-button">
-            <button>Explore Now</button>
+            <button>Explore more</button>
           </div>
         </div>
         <div className="explore-section-image">
           <div className="explore-section-image-qr-code">
             <Image
-              src="/qr-code.png"
+              src="/qr-code.svg"
               alt="explore-section-image-1"
               width={180}
               height={180}
@@ -31,12 +31,7 @@ const Explore = () => {
           </div>
           <div className="explore-section-image-text-mobile">
             <div className="explore-section-image-div-text">
-              <Image
-                src="/arrow-up.svg"
-                alt="arrow-up-right"
-                width={36}
-                height={22}
-              />
+              <img src="/arrow-up.svg" alt="arrow-up-right" />
               <p className="explore-section-image-div-text-android">
                 Scan to download on <span>Android</span>
               </p>
@@ -48,17 +43,14 @@ const Explore = () => {
               <p className="explore-section-image-div-text-ios">
                 Scan to download on <span>iOS</span>
               </p>
-              <Image
-                src="/arrow-down.svg"
-                alt="arrow-down-right"
-                width={36}
-                height={22}
-              />
+              <img src="/arrow-down.svg" alt="arrow-down-right" />
+              {/* <div className="explore-section-image-div-text-arrow-div">
+              </div> */}
             </div>
           </div>
           <div className="explore-section-image-qr-code">
             <Image
-              src="/ios-qr.png"
+              src="/ios-qr.svg"
               alt="explore-section-image-1"
               width={180}
               height={180}

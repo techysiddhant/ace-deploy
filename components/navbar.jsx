@@ -24,9 +24,14 @@ const Navbar = () => {
           <Link href="/" className="navbar-menu-link">
             Guru Speak
           </Link>
-          <Link href="/" className="navbar-menu-link">
-            ACEplus Zones
-          </Link>
+          <div>
+            <Link href="/" className="navbar-menu-link navbar-menu-link-arrow">
+              ACEplus Zones{" "}
+              <span>
+                <img src="/arrow.svg" alt="arrow" />
+              </span>
+            </Link>
+          </div>
           <Link href="/" className="navbar-menu-link">
             ACEplus Dictionary
           </Link>

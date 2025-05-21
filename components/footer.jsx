@@ -101,7 +101,7 @@ const Footer = () => {
       <div className="container footer-container">
         <div className="footer-div-1">
           <div className="footer-div-1-logo">
-            <Image src="/logo-white.png" width={190} height={100} alt="logo" />
+            <Image src="/logo-white.png" width={220} height={100} alt="logo" />
           </div>
           <Link href="mailto:hello@aceplus.in">hello@aceplus.in</Link>
           <Link href="tel:+919007858855">+91 9007858855</Link>
