@@ -20,9 +20,13 @@ const Connect = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const validateForm = () => {
     let isValid = true;
-    const newErrors = { ...error };
+    const newErrors = {
+      name: "",
+      phone: "",
+    };
 
     if (!formData.name.trim()) {
       newErrors.name = "Please enter your name.";
@@ -47,10 +51,6 @@ const Connect = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError({
-      name: "",
-      phone: "",
-    });
 
     if (validateForm()) {
       setIsLoading(true);

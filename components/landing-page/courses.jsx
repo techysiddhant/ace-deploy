@@ -72,26 +72,19 @@ const Courses = () => {
     // });
   };
   const [showStaticImage, setShowStaticImage] = useState(false);
-  const [isFading, setIsFading] = useState(false);
-
   useEffect(() => {
-    const gifDuration = 4000; // ms
+    const gifDuration = 3800; // ms
 
     // Start fade transition just before switch
     const fadeStart = setTimeout(() => {
-      setIsFading(true);
-    }, gifDuration - 300); // Start fade-out 500ms before switch
-
-    const switchImage = setTimeout(() => {
       setShowStaticImage(true);
-      setIsFading(false);
-    }, gifDuration);
+    }, gifDuration); // Start fade-out 500ms before switch
 
     return () => {
       clearTimeout(fadeStart);
-      clearTimeout(switchImage);
     };
   }, []);
+
   return (
     <div>
       <div className="container">
@@ -101,9 +94,16 @@ const Courses = () => {
             <div className="courses-section-content-mb-item border-badge-1">
               <div className="courses-section-content-mb-item-img fade-container">
                 <img
-                  src={showStaticImage ? "/beginner.svg" : "/beginner.gif"}
-                  alt="courses-1"
-                  className={`fade-image ${isFading ? "fade-out" : "fade-in"}`}
+                  src="/beginner-1.png"
+                  alt="courses-1-static"
+                  className={`static-image static-image-mb ${
+                    showStaticImage ? "fade-in" : ""
+                  }`}
+                />
+                <img
+                  src="/beginner-1.gif"
+                  alt="courses-1-gif"
+                  className={`gif-image ${showStaticImage ? "fade-out" : ""}`}
                 />
               </div>
               <div className="courses-section-content-mb-item-content">
@@ -127,9 +127,16 @@ const Courses = () => {
             <div className="courses-section-content-mb-item border-badge-2">
               <div className="courses-section-content-mb-item-img fade-container">
                 <img
-                  src={showStaticImage ? "/advance.svg" : "/advanced.gif"}
-                  alt="courses-2"
-                  className={`fade-image ${isFading ? "fade-out" : "fade-in"}`}
+                  src="/advance-1.png"
+                  alt="courses-1-static"
+                  className={`static-image static-image-mb ${
+                    showStaticImage ? "fade-in" : ""
+                  }`}
+                />
+                <img
+                  src="/advance-1.gif"
+                  alt="courses-1-gif"
+                  className={`gif-image ${showStaticImage ? "fade-out" : ""}`}
                 />
               </div>
 
@@ -154,9 +161,16 @@ const Courses = () => {
             <div className="courses-section-content-mb-item border-badge-3">
               <div className="courses-section-content-mb-item-img fade-container">
                 <img
-                  src={showStaticImage ? "/expert.svg" : "/expert.gif"}
-                  alt="courses-3"
-                  className={`fade-image ${isFading ? "fade-out" : "fade-in"}`}
+                  src="/expert-1.png"
+                  alt="courses-1-static"
+                  className={`static-image static-image-mb static-image-mb-3 ${
+                    showStaticImage ? "fade-in" : ""
+                  }`}
+                />
+                <img
+                  src="/expert-1.gif"
+                  alt="courses-1-gif"
+                  className={`gif-image ${showStaticImage ? "fade-out" : ""}`}
                 />
               </div>
 
@@ -179,13 +193,16 @@ const Courses = () => {
             <div className="courses-section-content-mb-item border-badge-4">
               <div className="courses-section-content-mb-item-img fade-container">
                 <img
-                  src={
-                    showStaticImage
-                      ? "/spoken-english.svg"
-                      : "/spoken-english.gif"
-                  }
-                  alt="courses-4"
-                  className={`fade-image ${isFading ? "fade-out" : "fade-in"}`}
+                  src="/spoken-english-1.png"
+                  alt="courses-1-static"
+                  className={`static-image static-image-mb static-image-mb-4 ${
+                    showStaticImage ? "fade-in" : ""
+                  }`}
+                />
+                <img
+                  src="/spoken-english-1.gif"
+                  alt="courses-1-gif"
+                  className={`gif-image ${showStaticImage ? "fade-out" : ""}`}
                 />
               </div>
 
@@ -245,10 +262,17 @@ const Courses = () => {
                 <div className="courses-section-content-mb-item border-badge-1">
                   <div className="courses-section-content-mb-item-img fade-container">
                     <img
-                      src={showStaticImage ? "/beginner.svg" : "/beginner.gif"}
-                      alt="courses-1"
-                      className={`fade-image ${
-                        isFading ? "fade-out" : "fade-in"
+                      src="/beginner-1.png"
+                      alt="courses-1-static"
+                      className={`static-image ${
+                        showStaticImage ? "fade-in" : ""
+                      }`}
+                    />
+                    <img
+                      src="/beginner-1.gif"
+                      alt="courses-1-gif"
+                      className={`gif-image ${
+                        showStaticImage ? "fade-out" : ""
                       }`}
                     />
                   </div>
@@ -273,10 +297,17 @@ const Courses = () => {
                 <div className="courses-section-content-mb-item border-badge-2">
                   <div className="courses-section-content-mb-item-img fade-container">
                     <img
-                      src={showStaticImage ? "/advance.svg" : "/advanced.gif"}
-                      alt="courses-2"
-                      className={`fade-image ${
-                        isFading ? "fade-out" : "fade-in"
+                      src="/advance-1.png"
+                      alt="courses-1-static"
+                      className={`static-image ${
+                        showStaticImage ? "fade-in" : ""
+                      }`}
+                    />
+                    <img
+                      src="/advance-1.gif"
+                      alt="courses-1-gif"
+                      className={`gif-image ${
+                        showStaticImage ? "fade-out" : ""
                       }`}
                     />
                   </div>
@@ -302,10 +333,17 @@ const Courses = () => {
                 <div className="courses-section-content-mb-item border-badge-3">
                   <div className="courses-section-content-mb-item-img fade-container">
                     <img
-                      src={showStaticImage ? "/expert.svg" : "/expert.gif"}
-                      alt="courses-3"
-                      className={`fade-image ${
-                        isFading ? "fade-out" : "fade-in"
+                      src="/expert-1.png"
+                      alt="courses-1-static"
+                      className={`static-image ${
+                        showStaticImage ? "fade-in" : ""
+                      }`}
+                    />
+                    <img
+                      src="/expert-1.gif"
+                      alt="courses-1-gif"
+                      className={`gif-image ${
+                        showStaticImage ? "fade-out" : ""
                       }`}
                     />
                   </div>
@@ -331,14 +369,17 @@ const Courses = () => {
                 <div className="courses-section-content-mb-item border-badge-4 item-4">
                   <div className="courses-section-content-mb-item-img fade-container">
                     <img
-                      src={
-                        showStaticImage
-                          ? "/spoken-english.svg"
-                          : "/spoken-english.gif"
-                      }
-                      alt="courses-4"
-                      className={`fade-image ${
-                        isFading ? "fade-out" : "fade-in"
+                      src="/spoken-english-1.png"
+                      alt="courses-1-static"
+                      className={`static-image ${
+                        showStaticImage ? "fade-in" : ""
+                      }`}
+                    />
+                    <img
+                      src="/spoken-english-1.gif"
+                      alt="courses-1-gif"
+                      className={`gif-image ${
+                        showStaticImage ? "fade-out" : ""
                       }`}
                     />
                   </div>
