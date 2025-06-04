@@ -26,7 +26,11 @@ const Touch = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const newErrors = { ...error };
+    const newErrors = {
+      name: "",
+      phone: "",
+      email: "",
+    };
 
     if (!formData.name.trim()) {
       newErrors.name = "Please enter your name.";
@@ -56,11 +60,6 @@ const Touch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError({
-      name: "",
-      phone: "",
-      email: "",
-    });
 
     if (validateForm()) {
       setIsLoading(true);
